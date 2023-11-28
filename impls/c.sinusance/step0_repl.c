@@ -1,27 +1,29 @@
 #include <stdio.h>
 
-void READ(char* arg) {
+char* READ(char* arg) {
   return arg;
 }
 
-void EVAL(char* arg) {
+char* EVAL(char* arg) {
   return arg;
 }
 
-void PRINT(char* arg) {
+char* PRINT(char* arg) {
+  printf("%s", arg);
   return arg;
 }
 
 void rep(char* input) {
-  return PRINT(EVAL(READ(input)));
+  PRINT(EVAL(READ(input)));
 }
 
-main(char* argv[], int argc) {
+int main(int argc, char* argv[]) {
   char input[500];
 
   printf("user> ");
-  while (fgets(input, 500, STDIN) != EOF) {
+  while (fgets(input, 500, stdin) != NULL) {
     rep(input);
+    printf("user> ");
   }
 
   return 0;
